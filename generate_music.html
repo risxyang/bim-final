@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Magenta - multitrack chords</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes"
+    />
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://magenta.tensorflow.org/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.16.0"></script>
+    <link rel="stylesheet" href="chordtest.css" />
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="preamble">
+        <h1>Generate music using MusicRNN!</h1>
+      </div>
+      <!-- <button onClick={()=> this.playMusic(this.state.melody)}>play loaded melody</button>
+            <button onClick={()=> {this.playMusic(presetMelodies.Arpeggiated)}}>play arpeggios input</button>
+            <button onClick={()=> { this.playMusic(presetMelodies.Twinkle) }}>play twinkle input</button>
+            <button onClick={()=> { this.playMusic(presetMelodies.Sparse) }}>play sparse input</button> -->
+
+      <button id="loadedMusic">Play loaded melody</button>
+      <button id="twinkle">Play Twinkle</button>
+      <button id="arpeggiated">Play Arpeggiated</button>
+      <button id="sparse">Play Sparse</button>
+    </div>
+
+    <!-- <script src="utils.js" type="module"></script> -->
+
+    <script src="generate_music.js"></script>
+  </body>
+</html>

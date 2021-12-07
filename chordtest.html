@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Magenta - multitrack chords</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <link id="favicon" rel="icon" href="https://magenta.tensorflow.org/favicon.ico" type="image/x-icon">
+    
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.16.0"></script>
+    <link rel="stylesheet" href="chordtest.css">
+    
+  </head>
+  <body>
+    <div class="content">
+      <div class="preamble">
+        <h1>Chords</h1>
+        
+        <p><b>Chord progression: </b>
+        <div id="status" class="loading"></div>
+        <div id="changeChordsPopup"></div>
+        <!-- <input id="alpha" type="range" min="0" max="5" value="0"> -->
+          <span id="chordsContainer" disabled>
+            <input id="chord1" type="text" value="Dm">
+            <input id="chord2" type="text" value="F">
+            <input id="chord3" type="text" value="Am">
+            <input id="chord4" type="text" value="G">
+          </span>
+          <button id="changeChords">Change</button>
+        </p>
+      </div>
+    </div>
+
+  <script src="chordtest.js"></script>
+  </body>
+</html>

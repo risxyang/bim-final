@@ -1,0 +1,97 @@
+
+ @import url(https://fonts.googleapis.com/css?family=Roboto);
+
+
+body {
+    background: #facfd9;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Roboto', monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+.dcontainer
+{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.content {
+    background: white;
+    width: 75%;
+    margin: 40px auto 20px auto;
+    border: 10px solid #d64768;
+    border-radius:  30px;
+    padding: 6%; 
+    position: relative;
+  }
+
+  .sidecontainer
+  {
+    margin-left: 4%;
+  }
+  
+
+[disabled] {
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  #chordsContainer[disabled] {
+    opacity: 1;
+  }
+  
+  #chordsContainer[disabled] input {
+    background: transparent;
+    border-color: transparent;
+    /* margin-top: 5px; */
+  }
+
+  #chordsContainer input {
+    background: #ffe596;
+    /* border-color: transparent; */
+    /* margin-top: 5px; */
+  }
+
+  #changeChordsPopup
+  {
+    position:absolute;
+    background:#d64768;
+    color:white;
+    left: 200px;
+    width: 100%;
+    height: auto;
+    margin: 1%;
+    border-radius: 5px;
+    z-index: 3;
+  }
+
+input
+  {
+    margin-top: 10px;
+    padding: 5px;
+  }
+   
+button {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-radius:  5px;
+    color: #d64768;
+    border: 4px solid #d64768;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s linear;
+    margin-top: 15px;
+  }
+  button:hover {
+    background: #d64768;
+    color: white;
+  }
+  
+  
+  

@@ -27,6 +27,24 @@ body {
   width: var(--width);
 }
 
+.white_key_name {
+  position: relative;
+  left: 30%;
+  top: 80%;
+  font-family: Arial;
+  font-size: 2.5em;
+  color: red;
+}
+
+.black_key_name {
+  position: relative;
+  left: 30%;
+  top: 50%;
+  font-family: Arial;
+  font-size: 2.5em;
+  color: red;
+}
+
 .white {
   --width: 14%;
   height: 300px;

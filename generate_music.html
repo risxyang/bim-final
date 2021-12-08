@@ -19,7 +19,12 @@
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.16.0"></script>
+    <script>
+      // const currentSong = <%- JSON.stringify(locals.song) || 'undefined' %>
+      const currentSong = 'undefined'
+    </script>
     <link rel="stylesheet" href="generate_music.css" />
+    <link rel="stylesheet" href="piano.css" />
   </head>
 
   <body>
@@ -34,6 +39,7 @@
               <button onClick={()=> { this.playMusic(presetMelodies.Twinkle) }}>play twinkle input</button>
               <button onClick={()=> { this.playMusic(presetMelodies.Sparse) }}>play sparse input</button> -->
 
+        <button id="originalSequence">Play your own note sequence!</button>
         <button id="loadedMusic">Play loaded melody</button>
         <button id="noteSeqFromChord">Play note sequence from chord</button>
         <button id="twinkle">Play Twinkle</button>
@@ -59,9 +65,43 @@
         </div>
     </div>
     </div>
-    <div class="content">
-      display options here (can remove this box)
+    <div>
+      <div id ="pianoContainer" class="content" hidden>
+        <div class="piano">
+          <div data-note="C" class="key white"></div>
+          <div data-note="Db" class="key black"></div>
+          <div data-note="D" class="key white"></div>
+          <div data-note="Eb" class="key black"></div>
+          <div data-note="E" class="key white"></div>
+          <div data-note="F" class="key white"></div>
+          <div data-note="Gb" class="key black"></div>
+          <div data-note="G" class="key white"></div>
+          <div data-note="Ab" class="key black"></div>
+          <div data-note="A" class="key white"></div>
+          <div data-note="Bb" class="key black"></div>
+          <div data-note="B" class="key white"></div>
+        </div>
+      
+        <audio id="C" src="notes/C.mp3"></audio>
+        <audio id="Db" src="notes/Db.mp3"></audio>
+        <audio id="D" src="notes/D.mp3"></audio>
+        <audio id="Eb" src="notes/Eb.mp3"></audio>
+        <audio id="E" src="notes/E.mp3"></audio>
+        <audio id="F" src="notes/F.mp3"></audio>
+        <audio id="Gb" src="notes/Gb.mp3"></audio>
+        <audio id="G" src="notes/G.mp3"></audio>
+        <audio id="Ab" src="notes/Ab.mp3"></audio>
+        <audio id="A" src="notes/A.mp3"></audio>
+        <audio id="Bb" src="notes/Bb.mp3"></audio>
+        <audio id="B" src="notes/B.mp3"></audio>
+
+        <button id="finishedPlaying">Done!</button>
       </div>
+     
+    </div>
+    <!-- <div class="content">
+      display options here (can remove this box)
+      </div> -->
 </div>
 
   <!-- <script src="chordtest.js"></script> -->

@@ -442,7 +442,7 @@ function generateMelodyBuilderOptions() {
 
   // this is global window
   console.log('this', this, this.model)
-  
+
   const option1Promise = continueSequence(this.currentInputNoteSequence)
   const option2Promise = continueSequence(this.currentInputNoteSequence)
 
@@ -455,7 +455,7 @@ function generateMelodyBuilderOptions() {
 function continueSequence(ns, chordsArray) {
   // takes a notesequence
   // chords optional
-  if(chordsArray) {
+  if (chordsArray) {
     console.log('using chords')
     // TODO
   }

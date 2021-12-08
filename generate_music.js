@@ -156,11 +156,9 @@ window.onload = () => {
 
   // init rnn
   initRNN()
-
-  // init chord cnn, make this a option
-  // initChordRNN()
 };
 
+// 2 for testing, 8 originally
 const nOfBars = 2 // hardcode
 
 // constructor
@@ -169,6 +167,9 @@ this.melodyBuilderIndex = 0
 this.currentInputNoteSequence = null // the current note sequence used for melody builder option generation
 this.userInputNoteSequence = null // the users seed note sequence
 this.completeNoteSequence = null // the complete note sequence
+
+const svg1 = document.getElementsByTagName('svg')[0]
+const svg2 = document.getElementsByTagName('svg')[1]
 
 const initRNN = () => {
   console.log('hi')
@@ -490,7 +491,15 @@ function generateMelodyBuilderOptions(ns) {
   Promise.all([option1Promise, option2Promise]).then((values) => {
     console.log('resolved continueSequence', values);
     this.melodyBuilderOptions.push(values)
+
+    // (re)-initialize the visuals
+    this.visualizer1 = new mm.PianoRollSVGVisualizer(values[0], svg1)
+    this.visualizer2 = new mm.PianoRollSVGVisualizer(values[1], svg2)
   });
+
+  // redraw the visualizers
+  // this.visualizer1.redraw()
+  // this.visualizer2.redraw()
 }
 
 function continueSequence(ns, chordsArray) {

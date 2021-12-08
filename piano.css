@@ -25,6 +25,26 @@ body {
 .key {
   height: calc(var(--width) * 4);
   width: var(--width);
+  justify-content: center;
+  align-items: bottom;
+}
+
+.white_key_name {
+  position: relative;
+  left: 30%;
+  top: 80%;
+  font-family: Arial;
+  font-size: 2.5em;
+  color: red;
+}
+
+.black_key_name {
+  position: relative;
+  left: 30%;
+  top: 50%;
+  font-family: Arial;
+  font-size: 2.5em;
+  color: red;
 }
 
 .white {

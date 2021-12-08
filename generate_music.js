@@ -261,8 +261,8 @@ const initChordRNN = () => {
 
 /*PIANO*/
 
-const WHITE_KEYS = ['z', 'x', 'c', 'v', 'b', 'n', 'm']
-const BLACK_KEYS = ['s', 'd', 'g', 'h', 'j']
+const WHITE_KEYS = ['a', 's', 'd', 'f', 'g', 'h', 'j']
+const BLACK_KEYS = ['w', 'e', 't', 'y', 'u']
 
 const recordButton = document.querySelector('#record-button')
 const playButton = document.querySelector('#play-button')

@@ -54,7 +54,7 @@ body {
   margin-bottom: 2rem;
   display: flex;
 }
-
+/* 
 .btn {
   --hue: 100;
   --saturation: 100%;
@@ -67,11 +67,11 @@ body {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
-}
+} */
 
-.btn:first-child {
+/* .btn:first-child {
   margin-left: 0;
-}
+} */
 
 .record-button {
   --hue: 0;

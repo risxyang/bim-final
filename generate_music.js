@@ -290,15 +290,15 @@ if (recordButton) {
 }
 playButton.addEventListener('click', playSong)
 
-document.addEventListener('keydown', e => {
-  if (e.repeat) return
-  const key = e.key
-  const whiteKeyIndex = WHITE_KEYS.indexOf(key)
-  const blackKeyIndex = BLACK_KEYS.indexOf(key)
+// document.addEventListener('keydown', e => {
+//   if (e.repeat) return
+//   const key = e.key
+//   const whiteKeyIndex = WHITE_KEYS.indexOf(key)
+//   const blackKeyIndex = BLACK_KEYS.indexOf(key)
 
-  if (whiteKeyIndex > -1) playNote(whiteKeys[whiteKeyIndex])
-  if (blackKeyIndex > -1) playNote(blackKeys[blackKeyIndex])
-})
+//   if (whiteKeyIndex > -1) playNote(whiteKeys[whiteKeyIndex])
+//   if (blackKeyIndex > -1) playNote(blackKeys[blackKeyIndex])
+// })
 
 function toggleRecording() {
   recordButton.classList.toggle('active')
@@ -367,3 +367,12 @@ function hidePiano() {
   // this.userInputNoteSequence = songNoteToNoteSequence(songNotes)
 
 }
+
+document.addEventListener('keydown', function (e) {
+  // console.log(`key=${event.key},code=${event.code}`);
+  console.log(e.key);
+  const validKeys = ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j"];
+  if (validKeys.includes(e.key)) {
+    playNote(keys[validKeys.indexOf(e.key)]);
+  }
+})

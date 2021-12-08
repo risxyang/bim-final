@@ -264,9 +264,8 @@ const initChordRNN = () => {
 const WHITE_KEYS = ['z', 'x', 'c', 'v', 'b', 'n', 'm']
 const BLACK_KEYS = ['s', 'd', 'g', 'h', 'j']
 
-const recordButton = document.querySelector('.record-button')
-const playButton = document.querySelector('.play-button')
-const saveButton = document.querySelector('.save-button')
+const recordButton = document.querySelector('#record-button')
+const playButton = document.querySelector('#play-button')
 const keys = document.querySelectorAll('.key')
 const whiteKeys = document.querySelectorAll('.key.white')
 const blackKeys = document.querySelectorAll('.key.black')
@@ -288,9 +287,6 @@ keys.forEach(key => {
 
 if (recordButton) {
   recordButton.addEventListener('click', toggleRecording)
-}
-if (saveButton) {
-  saveButton.addEventListener('click', saveSong)
 }
 playButton.addEventListener('click', playSong)
 
@@ -318,16 +314,15 @@ function isRecording() {
 }
 
 function startRecording() {
+  console.log('started recording notes')
   recordingStartTime = Date.now()
   songNotes = []
-  playButton.classList.remove('show')
-  saveButton.classList.remove('show')
+  // playButton.classList.remove('show')
 }
 
 function stopRecording() {
-  playSong()
-  playButton.classList.add('show')
-  saveButton.classList.add('show')
+  console.log('stopped recording', songNotes)
+  // playButton.classList.add('show')
 }
 
 function playSong() {
@@ -351,10 +346,11 @@ function playNote(key) {
 }
 
 function recordNote(note) {
-  // TODO
+  songNotes.push({
+    key: note,
+    startTime: Date.now() - recordingStartTime
+  })
 }
-
-
 
 function rolloutPiano() {
   console.log("show piano");
@@ -365,6 +361,9 @@ function rolloutPiano() {
 function hidePiano() {
   console.log("hide piano");
   piano.setAttribute("hidden", "");
-  console.log("song:" + songNotes)
+  console.log("song:", songNotes)
+
+  // Save the songNotes as the notesequence to give MusicRNN
+  // this.userInputNoteSequence = songNoteToNoteSequence(songNotes)
 
 }

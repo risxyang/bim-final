@@ -29,89 +29,96 @@
   </head>
 
   <body>
-    <div class="tcontainer">
-      <div class="sidecontainer">
-      <div class="content">
-        <div class="preamble">
-          <h1>Generate music using MusicRNN!</h1>
-        </div>
-
-        <button id="originalSequence">Play your own note sequence!</button>
-        <button id="loadedMusic">Play loaded melody</button>
-        <button id="noteSeqFromChord">Play note sequence from chord</button>
-        <button id="twinkle">Play Twinkle</button>
-        <button id="arpeggiated">Play Arpeggiated</button>
-        <button id="sparse">Play Sparse</button>
-      </div>
-      <div class="content">
-        <div class="preamble">
-          <h1>Chords</h1>
+    <div class="tVerticalContainer">
+      <p class="title">Interactive Music Generator</p>
+      <div>
+        <!-- <p class="desc"> description here  </p> -->
+        <div class="dContainer">
+          <div class="selectorContainer">
+            <div class="buttons">
+              <button id="preloadedNS">Choose a Preloaded Note Sequence</button>
+              <button id="customNS">Create your Own Custom Note Sequence</button>
+            </div>
+            <div>
+              <div id="NSoptions" class="container">
+                <div id="preloadedOptions" hidden>
+                  <button id="loadedMusic">Preloaded melody</button>
+                  <button id="twinkle">Twinkle</button>
+                  <button id="arpeggiated">Arpeggiated</button>
+                  <button id="sparse">Sparse</button>
+                  
+                  <!-- remove -->
+                  <div id="originalSequence">Play your own note sequence!</div>
+                  <div id="loadedMusic">Play loaded melody</div>
+                  <div id="noteSeqFromChord">Play note sequence from chord</div>
+                </div>
+                <div id="pianoContainer" hidden>
+                    <div class="dcontainer">
+                    <button id="record-button" class="btn">Record</button>
+                    <button id="play-button" class="btn">Play</button> 
+                    </div>
+                    <div class="piano">
+                      <div data-note="C" class="key white"></div>
+                      <div data-note="Db" class="key black"></div>
+                      <div data-note="D" class="key white"></div>
+                      <div data-note="Eb" class="key black"></div>
+                      <div data-note="E" class="key white"></div>
+                      <div data-note="F" class="key white"></div>
+                      <div data-note="Gb" class="key black"></div>
+                      <div data-note="G" class="key white"></div>
+                      <div data-note="Ab" class="key black"></div>
+                      <div data-note="A" class="key white"></div>
+                      <div data-note="Bb" class="key black"></div>
+                      <div data-note="B" class="key white"></div>
+                    </div>
+                  
+                    <audio id="C" src="notes/C.mp3"></audio>
+                    <audio id="Db" src="notes/Db.mp3"></audio>
+                    <audio id="D" src="notes/D.mp3"></audio>
+                    <audio id="Eb" src="notes/Eb.mp3"></audio>
+                    <audio id="E" src="notes/E.mp3"></audio>
+                    <audio id="F" src="notes/F.mp3"></audio>
+                    <audio id="Gb" src="notes/Gb.mp3"></audio>
+                    <audio id="G" src="notes/G.mp3"></audio>
+                    <audio id="Ab" src="notes/Ab.mp3"></audio>
+                    <audio id="A" src="notes/A.mp3"></audio>
+                    <audio id="Bb" src="notes/Bb.mp3"></audio>
+                    <audio id="B" src="notes/B.mp3"></audio>
           
-          <p><b>Chord progression: </b>
-          <div id="status" class="loading"></div>
-          <div id="changeChordsPopup"></div>
-          <!-- <input id="alpha" type="range" min="0" max="5" value="0"> -->
-            <span id="chordsContainer" disabled>
-              <input id="chord1" type="text" value="Dm">
-              <input id="chord2" type="text" value="F">
-              <input id="chord3" type="text" value="Am">
-              <input id="chord4" type="text" value="G">
-            </span>
-            <button id="changeChords">Change</button>
-          </p>
+                    <button id="finishedPlaying">Done! (Listen to your melody)</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="selectorContainer">
+            <div class="buttons">
+              <button id="inputChords">Input a Chord Sequence</button>
+              <button id="noChords">No Chord Sequence</button>
+            </div>
+            <div>
+              <div id = "chordSelector" class="container" hidden>
+                <div>
+                  <b>Chord progression: </b>
+                    <div id="status" class="loading"></div>
+                    <div id="changeChordsPopup"></div>
+                      <span id="chordsContainer" disabled>
+                        <input id="chord1" type="text" value="Dm">
+                        <input id="chord2" type="text" value="F">
+                        <input id="chord3" type="text" value="Am">
+                        <input id="chord4" type="text" value="G">
+                      </span>
+                      <button id="changeChords">Change</button>
+                    
+                </div>
+              </div>
+              <div id="noChordsSelector" class="container" hidden>
+                <p class="desc">No Chord Progression</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    </div>
-    <div>
-      <div id ="pianoContainer" class="content" >
-      <!-- TODO: [UI] should probabably add stop/start icon to this button to signal start or stope recording -->
-      <div class="dcontainer">
-        <button id="record-button" class="btn">Record</button>
-        <!-- <button id="save-button" class="btn">Save</button>    -->
-        <button id="play-button" class="btn">Play</button> 
-        </div>
-   
-      <div class="piano">
-          <div data-note="C" class="key white"></div>
-          <div data-note="Db" class="key black"></div>
-          <div data-note="D" class="key white"></div>
-          <div data-note="Eb" class="key black"></div>
-          <div data-note="E" class="key white"></div>
-          <div data-note="F" class="key white"></div>
-          <div data-note="Gb" class="key black"></div>
-          <div data-note="G" class="key white"></div>
-          <div data-note="Ab" class="key black"></div>
-          <div data-note="A" class="key white"></div>
-          <div data-note="Bb" class="key black"></div>
-          <div data-note="B" class="key white"></div>
-        </div>
-      
-        <audio id="C" src="notes/C.mp3"></audio>
-        <audio id="Db" src="notes/Db.mp3"></audio>
-        <audio id="D" src="notes/D.mp3"></audio>
-        <audio id="Eb" src="notes/Eb.mp3"></audio>
-        <audio id="E" src="notes/E.mp3"></audio>
-        <audio id="F" src="notes/F.mp3"></audio>
-        <audio id="Gb" src="notes/Gb.mp3"></audio>
-        <audio id="G" src="notes/G.mp3"></audio>
-        <audio id="Ab" src="notes/Ab.mp3"></audio>
-        <audio id="A" src="notes/A.mp3"></audio>
-        <audio id="Bb" src="notes/Bb.mp3"></audio>
-        <audio id="B" src="notes/B.mp3"></audio>
-
-        <button id="finishedPlaying">Done!</button>
-      </div>
-     
-    </div>
-    <!-- <div class="content">
-      display options here (can remove this box)
-      </div> -->
-</div>
-
-  <!-- <script src="chordtest.js"></script> -->
-
-    <!-- <script src="utils.js" type="module"></script> -->
-
+    
     <script src="generate_music.js"></script>
+    <script src="display.js"></script>
   </body>
 </html>

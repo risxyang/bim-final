@@ -30,3 +30,11 @@ inputChordsButton.onclick = () => {
     console.log("show chords");
     chordSelector.removeAttribute("hidden");
     noChordSelector.setAttribute("hidden", "");}
+
+//navigation
+
+const continueButton1 = document.getElementById('continue1')
+const section2 = document.getElementById('settings')
+continueButton1.onclick = () => {
+    section2.scrollIntoView();
+ }

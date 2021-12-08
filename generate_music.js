@@ -166,7 +166,7 @@ var chords = chordInputs.map(c => c.value);
 
 // Set UI state to changing chords.
 function setChordChangeState() {
-  statusDiv.innerText = 'Change chords (letters A through G, optionally followed by "m", "dim", "aug" for minor, diminished, and augmented chords), then press Done.';
+  // statusDiv.innerText = 'Change chords (letters A through G, optionally followed by "m", "dim", "aug" for minor, diminished, and augmented chords), then press Done.';
   changeChordsButton.innerText = 'Done';
   chordsContainer.removeAttribute('disabled');
   chordInputs.forEach(c => c.classList.remove('playing'));

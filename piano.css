@@ -29,20 +29,20 @@ body {
 
 .white_key_name {
   position: relative;
-  left: 30%;
+  left: 4%;
   top: 80%;
-  font-family: Arial;
+  font-family: 'Roboto Mono', monospace;
   font-size: 2.5em;
-  color: red;
+  color: purple;
 }
 
 .black_key_name {
   position: relative;
-  left: 30%;
+  left: 4%;
   top: 50%;
-  font-family: Arial;
+  font-family: 'Roboto Mono', monospace;
   font-size: 2.5em;
-  color: red;
+  color: purple;
 }
 
 .white {

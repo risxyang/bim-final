@@ -55,7 +55,7 @@
                   <div id="noteSeqFromChord"></div>
                 </div>
                 <div id="pianoContainer" class="container" hidden>
-                    <div class="dcontainer">
+                  <div class="dcontainer">
                     <button id="record-button" class="btn">Record</button>
                     <button id="play-button" class="btn">Play</button>
                   </div>
@@ -141,6 +141,28 @@
               </div>
               <div id="noChordsSelector" class="container" hidden>
                 <p class="desc">No Chord Progression</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="generateMusicContainer">
+            <!-- visualize melody with Visualizer on top  -->
+
+            <!-- play current sequence up until now -->
+            <button id="playCompleteNoteSequence">
+              Play sequence up until now
+            </button>
+
+            <!-- continue building the sequence -->
+            <div id="melodyBuilderContainer">
+              <!-- options for next sequences -->
+              <div id="nextSequence1">
+                <button id="nextSequence1PlayButton">Play Option 1</button>
+                <button id="nextSequence1SelectButton">Select Option 1</button>
+              </div>
+              <div id="nextSequence2">
+                <button id="nextSequence2PlayButton">Play Option 2</button>
+                <button id="nextSequence2SelectButton">Select Option 2</button>
               </div>
             </div>
           </div>

@@ -93,13 +93,24 @@ const originalNoteSeqButton = document.getElementById('originalSequence')
 const finishedPlayingButton = document.getElementById('finishedPlaying')
 const piano = document.getElementById('pianoContainer')
 
+const nextSequence1PlayButton = document.getElementById('nextSequence1PlayButton')
+const nextSequence2PlayButton = document.getElementById('nextSequence2PlayButton')
+
 twinkleButton.onclick = () => { this.player.start(presetMelodies.Twinkle) }
 arpeggiatedButton.onclick = () => { this.player.start(presetMelodies.Arpeggiated) }
 sparseButton.onclick = () => { this.player.start(presetMelodies.Sparse) }
 playNoteSeqFromChord.onclick = () => { this.player.start(this.noteSequenceFromChord) }
 playLoadedMusicButton.onclick = () => { this.player.start(this.noteSequence) }
 originalNoteSeqButton.onclick = () => { rolloutPiano() }
-finishedPlayingButton.onclick = () => { hidePiano() }
+finishedPlayingButton.onclick = () => { hidePiano(); generateMelodyBuilderOptions() }
+
+nextSequence1PlayButton.onclick = () => {
+  playNoteSequence(window.melodyBuilderOptions[window.melodyBuilderIndex][0])
+}
+
+nextSequence2PlayButton.onclick = () => {
+  playNoteSequence(window.melodyBuilderOptions[window.melodyBuilderIndex][1])
+}
 
 
 window.onload = () => {
@@ -117,6 +128,12 @@ window.onload = () => {
 };
 
 const nOfBars = 8 // hardcode
+
+// constructor
+this.melodyBuilderOptions = [] // an array of the choices at each index, an array of arrays
+this.melodyBuilderIndex = 0
+this.currentInputNoteSequence = [] // the current note sequence used for melody builder option generation
+this.userInputNoteSequence = [] // the users seed note sequence
 
 const initRNN = () => {
   console.log('hi')
@@ -326,12 +343,13 @@ function stopRecording() {
   // playButton.classList.add('show')
 
   // Save the songNotes as the notesequence to give MusicRNN
-  window.userInputNoteSequence = songNotesToNoteSequence(songNotes)
+  window.userInputNoteSequence = window.currentInputNoteSequence = songNotesToNoteSequence(songNotes)
   console.log('userInputNoteSequence', window.userInputNoteSequence)
   // console.log('twinke', presetMelodies.Twinkle)
 
 }
 
+// plays the note sequence input but the user
 function playSong() {
   // old way
   // if (songNotes.length === 0) return
@@ -344,6 +362,12 @@ function playSong() {
   // console.log('this',this)
   // play using the Magenta player
   this.player.start(this.userInputNoteSequence)
+}
+
+// TODO: merge play song and play notesequence
+function playNoteSequence(ns) {
+  // takes a NoteSequence
+  window.player.start(ns)
 }
 
 function playNote(key) {
@@ -399,7 +423,7 @@ function songNotesToNoteSequence(songNotes) {
   }
 }
 
-
+// TODO: only play keys if the piano is not hidden
 document.addEventListener('keydown', function (e) {
   // console.log(`key=${event.key},code=${event.code}`);
   console.log(e.key);
@@ -408,4 +432,40 @@ document.addEventListener('keydown', function (e) {
     playNote(keys[validKeys.indexOf(e.key)]);
   }
 })
+
+
+/**
+ * Melody Builder
+ */
+function generateMelodyBuilderOptions() {
+  console.log('generating melody builder options')
+
+  // this is global window
+  console.log('this', this, this.model)
+  
+  const option1Promise = continueSequence(this.currentInputNoteSequence)
+  const option2Promise = continueSequence(this.currentInputNoteSequence)
+
+  Promise.all([option1Promise, option2Promise]).then((values) => {
+    console.log('resolved continueSequence', values);
+    this.melodyBuilderOptions.push(values)
+  });
+}
+
+function continueSequence(ns, chordsArray) {
+  // takes a notesequence
+  // chords optional
+  if(chordsArray) {
+    console.log('using chords')
+    // TODO
+  }
+
+  return this.model.continueSequence(
+    ns,
+    nOfBars * 16,
+    1.0,
+    // chord here
+  )
+}
+
 

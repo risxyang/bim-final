@@ -186,25 +186,11 @@ function toggleChangeChords() {
     if (changingChords) {
       changingChords = false;
       chords = chordInputs.map(c => c.value);
-      const modelCheckPoint = 'https://storage.googleapis.com/magentadata/js/checkpoints/music_rnn/chord_pitches_improv'
-      const model = new mm.MusicRNN(modelCheckPoint);
       console.log(chords);
+
+      // TODO: clean this up by using the existing this.chordRNN instead of re-initializing
       initChordRNN()
-      // model.initialize()
-      // .then(() => {
-      //   console.log('initialized chord rnn!');
-      //   return model.continueSequence(
-      //     presetMelodies.Arpeggiated,
-      //     nOfBars * 16,
-      //     1.0, chords)
-      // })
-      // .then((noteSequence) => {
-      //   // this.setMelodies([i]);
-      //   console.log("new" + noteSequence);
-  
-      //   this.noteSequence = noteSequence;
-      //   this.model = model;
-      // });
+
       setUpdatingState();
     //   setTimeout(() => generateProgressions(setStoppedState), 0);
     } else {
@@ -259,7 +245,7 @@ function chordChanged() {
   
     model.initialize()
       .then(() => {
-        console.log('initialized non-chord rnn!');
+        console.log('initialized chord rnn!');
         return model.continueSequence(
           presetMelodies.Arpeggiated,
           nOfBars * 16,

@@ -112,7 +112,7 @@ window.onload = () => {
   // init rnn
   initRNN()
 
-  // TODO: init chord cnn, make this a option
+  // init chord cnn, make this a option
   initChordRNN()
 };
 
@@ -243,10 +243,12 @@ const initChordRNN = () => {
   model.initialize()
     .then(() => {
       console.log('initialized chord rnn!');
+      console.log('chords are', chords)
       return model.continueSequence(
         presetMelodies.Arpeggiated,
         nOfBars * 16,
-        1.0, chords)
+        1.0,
+        chords)
     })
     .then((noteSequence) => {
       // this.setMelodies([i]);
@@ -265,7 +267,6 @@ const BLACK_KEYS = ['s', 'd', 'g', 'h', 'j']
 const recordButton = document.querySelector('.record-button')
 const playButton = document.querySelector('.play-button')
 const saveButton = document.querySelector('.save-button')
-const songLink = document.querySelector('.song-link')
 const keys = document.querySelectorAll('.key')
 const whiteKeys = document.querySelectorAll('.key.white')
 const blackKeys = document.querySelectorAll('.key.black')
@@ -279,6 +280,7 @@ let recordingStartTime
 let songNotes = currentSong && currentSong.notes
 
 // TODO: add a clear() function to clear the current song notes 
+// TODO: implement record, save, play buttons
 
 keys.forEach(key => {
   key.addEventListener('click', () => playNote(key))

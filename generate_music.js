@@ -123,7 +123,7 @@ nextSequence1SelectButton.onclick = () => {
   ns = window.melodyBuilderOptions[window.melodyBuilderIndex][0]
   selectNoteSequence(ns)
 }
-nextSequence1SelectButton.onclick = () => {
+nextSequence2SelectButton.onclick = () => {
   console.log('selected option 2')
   ns = window.melodyBuilderOptions[window.melodyBuilderIndex][1]
   selectNoteSequence(ns)
@@ -161,7 +161,7 @@ window.onload = () => {
   // initChordRNN()
 };
 
-const nOfBars = 8 // hardcode
+const nOfBars = 2 // hardcode
 
 // constructor
 this.melodyBuilderOptions = [] // an array of the choices at each index, an array of arrays

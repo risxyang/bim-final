@@ -320,3 +320,11 @@ button:hover {
   text-align: center;
   display: inline-block;
 }
+
+.visualizer-container {
+  background: white;
+  padding: 14px;
+  overflow-x: auto;
+  border: 3px solid black;
+  margin-top: -3px;  /* so that the border doesn't overlap with the play buttons */
+}

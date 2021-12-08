@@ -108,6 +108,8 @@ window.onload = () => {
 
   // init player
   this.player = new mm.Player()
+  this.visualizer = new Visualizer(4);
+
 
   // init rnn
   initRNN()
@@ -358,10 +360,17 @@ function playNote(key) {
 }
 
 function recordNote(note) {
+  console.log('note', note)
   songNotes.push({
     key: note,
     startTime: Date.now() - recordingStartTime
   })
+
+  // // push into visualizer
+  // note = {
+
+  // }
+  // visualizer.showInput()
 }
 
 function rolloutPiano() {

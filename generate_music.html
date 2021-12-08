@@ -64,6 +64,14 @@
       <div>
         <div id="pianoContainer" class="content">
           <!-- TODO: [UI] should probabably add stop/start icon to this button to signal start or stope recording -->
+          <!-- <div id="visualizer"></div> -->
+          <div class="visualizer">
+            <div id="timeline"></div>
+            <svg id="svgInput"></svg>
+            <svg id="svgMelody"></svg>
+            <svg id="svgDrums"></svg>
+          </div>
+
           <div class="dcontainer">
             <button id="record-button" class="btn">Record</button>
             <button id="play-button" class="btn">Play</button>
@@ -109,6 +117,8 @@
 
     <!-- <script src="utils.js" type="module"></script> -->
 
+    <script src="visualizer.js"></script>
+    
     <script src="generate_music.js"></script>
   </body>
 </html>

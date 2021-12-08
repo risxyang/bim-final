@@ -113,7 +113,7 @@ window.onload = () => {
   initRNN()
 
   // init chord cnn, make this a option
-  initChordRNN()
+  // initChordRNN()
 };
 
 const nOfBars = 8 // hardcode

@@ -168,8 +168,9 @@ this.currentInputNoteSequence = null // the current note sequence used for melod
 this.userInputNoteSequence = null // the users seed note sequence
 this.completeNoteSequence = null // the complete note sequence
 
-const svg1 = document.getElementsByTagName('svg')[0]
-const svg2 = document.getElementsByTagName('svg')[1]
+const svg1 = document.getElementById('svg1')
+const svg2 = document.getElementById('svg2')
+const topSvg = document.getElementById('topVisualizer')
 
 const initRNN = () => {
   console.log('hi')
@@ -495,6 +496,8 @@ function generateMelodyBuilderOptions(ns) {
     // (re)-initialize the visuals
     this.visualizer1 = new mm.PianoRollSVGVisualizer(values[0], svg1)
     this.visualizer2 = new mm.PianoRollSVGVisualizer(values[1], svg2)
+
+    this.topVisualizer = new mm.PianoRollSVGVisualizer(this.completeNoteSequence, topSvg)
   });
 
   // redraw the visualizers

@@ -6,7 +6,7 @@ body {
     background: #facfd9;
     height: 100vh;
     margin: 0;
-    font-family: 'Roboto', monospace;
+    font-family: 'Roboto Mono', monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

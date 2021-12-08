@@ -97,7 +97,7 @@ twinkleButton.onclick = () => { this.player.start(presetMelodies.Twinkle) }
 arpeggiatedButton.onclick = () => { this.player.start(presetMelodies.Arpeggiated) }
 sparseButton.onclick = () => { this.player.start(presetMelodies.Sparse) }
 playNoteSeqFromChord.onclick = () => { this.player.start(this.noteSequenceFromChord) }
-playLoadedMusicButton.onclick = () => {this.player.start(this.noteSequence)}
+playLoadedMusicButton.onclick = () => { this.player.start(this.noteSequence) }
 originalNoteSeqButton.onclick = () => { rolloutPiano() }
 finishedPlayingButton.onclick = () => { hidePiano() }
 
@@ -166,100 +166,100 @@ var chords = chordInputs.map(c => c.value);
 
 // Set UI state to changing chords.
 function setChordChangeState() {
-    statusDiv.innerText = 'Change chords (letters A through G, optionally followed by "m", "dim", "aug" for minor, diminished, and augmented chords), then press Done.';
-    changeChordsButton.innerText = 'Done';
-    chordsContainer.removeAttribute('disabled');
-    chordInputs.forEach(c => c.classList.remove('playing'));
-  }
-  
+  statusDiv.innerText = 'Change chords (letters A through G, optionally followed by "m", "dim", "aug" for minor, diminished, and augmented chords), then press Done.';
+  changeChordsButton.innerText = 'Done';
+  chordsContainer.removeAttribute('disabled');
+  chordInputs.forEach(c => c.classList.remove('playing'));
+}
+
 function setUpdatingState() {
-    statusDiv.innerText = '';
-    chordsContainer.setAttribute('disabled', true);
-    changeChordsButton.innerText = 'Change';
-  }
-  
+  statusDiv.innerText = '';
+  chordsContainer.setAttribute('disabled', true);
+  changeChordsButton.innerText = 'Change';
+}
+
 // Start or finish changing chords.
 function toggleChangeChords() {
-    if (changingChords) {
-      changingChords = false;
-      chords = chordInputs.map(c => c.value);
-      console.log(chords);
+  if (changingChords) {
+    changingChords = false;
+    chords = chordInputs.map(c => c.value);
+    console.log(chords);
 
-      // TODO: clean this up by using the existing this.chordRNN instead of re-initializing
-      initChordRNN()
+    // TODO: clean this up by using the existing this.chordRNN instead of re-initializing
+    initChordRNN()
 
-      setUpdatingState();
+    setUpdatingState();
     //   setTimeout(() => generateProgressions(setStoppedState), 0);
-    } else {
-      playing = false;
-      changingChords = true;
-      setChordChangeState();
+  } else {
+    playing = false;
+    changingChords = true;
+    setChordChangeState();
     //   player.stop();
-    }
   }
+}
 
 // One of the chords has been edited.
 function chordChanged() {
-    const isGood = (chord) => {
-      if (!chord) {
-        return false;
-      }
-      try {
-        mm.chords.ChordSymbols.pitches(chord);
-        return true;
-      } catch(e) {
-        return false;
-      }
+  const isGood = (chord) => {
+    if (!chord) {
+      return false;
     }
-    
-    var allGood = true;
-    chordInputs.forEach(c => {
-      if (isGood(c.value)) {
-        c.classList.remove('invalid');
-      } else {
-        c.classList.add('invalid');
-        allGood = false;
-      }
+    try {
+      mm.chords.ChordSymbols.pitches(chord);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  var allGood = true;
+  chordInputs.forEach(c => {
+    if (isGood(c.value)) {
+      c.classList.remove('invalid');
+    } else {
+      c.classList.add('invalid');
+      allGood = false;
+    }
+  });
+
+  changeChordsButton.disabled = !allGood;
+  // if (allGood)
+  // {
+  //     console.log(chords);
+  //     // chordInputs.forEach(c => {
+  //     //     console.log(c.value);
+  //     // })
+  // }
+
+}
+
+const initChordRNN = () => {
+  console.log('hi')
+  const modelCheckPoint = 'https://storage.googleapis.com/magentadata/js/checkpoints/music_rnn/chord_pitches_improv'
+  const model = new mm.MusicRNN(modelCheckPoint);
+
+  console.log('here')
+
+  model.initialize()
+    .then(() => {
+      console.log('initialized chord rnn!');
+      return model.continueSequence(
+        presetMelodies.Arpeggiated,
+        nOfBars * 16,
+        1.0, chords)
+    })
+    .then((noteSequence) => {
+      // this.setMelodies([i]);
+      console.log(noteSequence)
+
+      this.noteSequenceFromChord = noteSequence
+      this.model = model;
     });
-  
-    changeChordsButton.disabled = !allGood;
-    // if (allGood)
-    // {
-    //     console.log(chords);
-    //     // chordInputs.forEach(c => {
-    //     //     console.log(c.value);
-    //     // })
-    // }
-    
-  }
-  
-  const initChordRNN = () => {
-    console.log('hi')
-    const modelCheckPoint = 'https://storage.googleapis.com/magentadata/js/checkpoints/music_rnn/chord_pitches_improv'
-    const model = new mm.MusicRNN(modelCheckPoint);
-  
-    console.log('here')
-  
-    model.initialize()
-      .then(() => {
-        console.log('initialized chord rnn!');
-        return model.continueSequence(
-          presetMelodies.Arpeggiated,
-          nOfBars * 16,
-          1.0, chords)
-      })
-      .then((noteSequence) => {
-        // this.setMelodies([i]);
-        console.log(noteSequence)
-  
-        this.noteSequenceFromChord = noteSequence
-        this.model = model;
-      });
-  }
+}
 
-  /*PIANO*/
+/*PIANO*/
 
-  const WHITE_KEYS = ['z', 'x', 'c', 'v', 'b', 'n', 'm']
+const WHITE_KEYS = ['z', 'x', 'c', 'v', 'b', 'n', 'm']
 const BLACK_KEYS = ['s', 'd', 'g', 'h', 'j']
 
 const recordButton = document.querySelector('.record-button')
@@ -349,32 +349,20 @@ function playNote(key) {
 }
 
 function recordNote(note) {
-  songNotes.push({
-    key: note,
-    startTime: Date.now() - recordingStartTime
-  })
-}
-
-function saveSong() {
-  axios.post('/songs', { songNotes: songNotes }).then(res => {
-    songLink.classList.add('show')
-    songLink.href = `/songs/${res.data._id}`
-  })
+  // TODO
 }
 
 
 
-function rolloutPiano()
-{
+function rolloutPiano() {
   console.log("show piano");
-  piano.removeAttribute("hidden"); 
+  piano.removeAttribute("hidden");
 
 }
 
-function hidePiano()
-{
+function hidePiano() {
   console.log("hide piano");
-  piano.setAttribute("hidden",""); 
+  piano.setAttribute("hidden", "");
   console.log("song:" + songNotes)
 
 }

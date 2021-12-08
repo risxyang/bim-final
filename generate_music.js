@@ -288,7 +288,8 @@ keys.forEach(key => {
 if (recordButton) {
   recordButton.addEventListener('click', toggleRecording)
 }
-playButton.addEventListener('click', playSong)
+// TODO: get rid of and just try using global window variable
+playButton.addEventListener('click', playSong.bind(this))
 
 // document.addEventListener('keydown', e => {
 //   if (e.repeat) return
@@ -323,15 +324,26 @@ function startRecording() {
 function stopRecording() {
   console.log('stopped recording', songNotes)
   // playButton.classList.add('show')
+
+  // Save the songNotes as the notesequence to give MusicRNN
+  window.userInputNoteSequence = songNotesToNoteSequence(songNotes)
+  console.log('userInputNoteSequence', window.userInputNoteSequence)
+  // console.log('twinke', presetMelodies.Twinkle)
+
 }
 
 function playSong() {
-  if (songNotes.length === 0) return
-  songNotes.forEach(note => {
-    setTimeout(() => {
-      playNote(keyMap[note.key])
-    }, note.startTime)
-  })
+  // old way
+  // if (songNotes.length === 0) return
+  // songNotes.forEach(note => {
+  //   setTimeout(() => {
+  //     playNote(keyMap[note.key])
+  //   }, note.startTime)
+  // })
+
+  // console.log('this',this)
+  // play using the Magenta player
+  this.player.start(this.userInputNoteSequence)
 }
 
 function playNote(key) {
@@ -362,11 +374,31 @@ function hidePiano() {
   console.log("hide piano");
   piano.setAttribute("hidden", "");
   console.log("song:", songNotes)
-
-  // Save the songNotes as the notesequence to give MusicRNN
-  // this.userInputNoteSequence = songNoteToNoteSequence(songNotes)
-
 }
+
+function songNotesToNoteSequence(songNotes) {
+  // returns a NoteSequence given some array of songNotes
+  // atm, only takes up to 16 notes
+  const noteToPitch = (note) => {
+    // append 4 because all our notes are on that octave
+    return Tonal.Midi.toMidi(note + '4')
+  }
+
+  // assume constant note length for now
+  notes = songNotes.map((noteObj, index) => ({
+    pitch: noteToPitch(noteObj.key),
+    quantizedStartStep: index * 2,
+    quantizedEndStep: (index + 1) * 2,
+  }))
+
+  return {
+    notes: notes,
+    quantizationInfo: { stepsPerQuarter: 4 },
+    tempos: [{ time: 0, qpm: 120 }],
+    totalQuantizedSteps: 32, // Note: this is hardcoded atm but we can make this any value
+  }
+}
+
 
 document.addEventListener('keydown', function (e) {
   // console.log(`key=${event.key},code=${event.code}`);
@@ -376,3 +408,4 @@ document.addEventListener('keydown', function (e) {
     playNote(keys[validKeys.indexOf(e.key)]);
   }
 })
+

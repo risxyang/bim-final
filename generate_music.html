@@ -30,178 +30,221 @@
 
   <body>
     <!-- <div class="tVerticalContainer"> -->
+      <div id="container">
+        <canvas id="pixie"></canvas>
+      </div>
       <section id="home">
       <p class="title">Interactive Music Generator</p>
-      <div class="glowsign"><b>about</b></div>
-      <div class="rules">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      <div class="signContainer">
+        <div class="glowsign"><b>about</b></div>
+        <div class="rules">
+          Welcome to Building Interactive Music!
+          We are so excited to have you here.<br><br>
+          After pressing the "Continue" button, you will input music to our generator by either choosing a preloaded note sequence, creating your own custom note sequence through our keyboard, or inputting a chord sequence.<br><br>
+          Then, our generator will extend your melody and provide two generated music options for you to visualize, listen, and select.<br>
+          Our generator will then continuously use your selection to generate more music and provide another two options.<br><br> 
+          Enjoy listening!
+        </div>
+        <button id="continue1" class="continue">Continue</button>
       </div>
-      <button id="continue1" class="continue">Continue</button>
+     
       </section>
       <section id="settings">
         <div>
           <!-- <p class="desc"> description here  </p> -->
+          
           <div class="dContainer">
-            <div class="selectorContainer">
-              <div class="buttons">
-                <button id="preloadedNS">Choose a Preloaded Note Sequence</button>
-                <button id="customNS">
-                  Create your Own Custom Note Sequence
-                </button>
-              </div>
-              <div>
-                <div id="NSoptions">
-                  <div id="preloadedOptions" class="container" hidden>
-                    <button id="loadedMusic">Preloaded melody</button>
-                    <button id="twinkle">Twinkle</button>
-                    <button id="arpeggiated">Arpeggiated</button>
-                    <button id="sparse">Sparse</button>
+            <div class="signContainer">
+              <div class="glowsign"><b># 1</b></div>
+              <div class="selectorContainer glowBox">
+                <div class="buttons">
+                  <button id="preloadedNS">Choose a Preloaded Note Sequence</button>
+                  <button id="customNS">
+                    Create your Own Custom Note Sequence
+                  </button>
+                </div>
+                <div>
+                  <div id="NSoptions">
+                    <div id="preloadedOptions" class="" hidden>
+                      <button id="loadedMusic" class="thin">Preloaded melody</button>
+                      <button id="twinkle" class="thin">Twinkle</button>
+                      <button id="arpeggiated" class="thin">Arpeggiated</button>
+                      <button id="sparse" class="thin">Sparse</button>
 
-                    <!-- remove -->
-                    <div id="originalSequence"></div>
-                    <div id="loadedMusic"></div>
-                    <div id="noteSeqFromChord"></div>
-                  </div>
-                  <div id="pianoContainer" class="container" hidden>
-                    <div class="dcontainer">
-                      <button id="record-button" class="btn">Record</button>
-                      <button id="play-button" class="btn">Play</button>
+                      <!-- remove -->
+                      <div id="originalSequence"></div>
+                      <div id="loadedMusic"></div>
+                      <div id="noteSeqFromChord"></div>
                     </div>
-                    <div class="piano">
-                      <div data-note="C" class="key white">
-                        <span class="white_key_name">a</span>
+                    <div id="pianoContainer" class="" hidden>
+                      
+                      <div class="piano">
+                        <div data-note="C" class="key white">
+                          <span class="white_key_name">a</span>
+                        </div>
+                        <div data-note="Db" class="key black">
+                          <span class="black_key_name">w</span>
+                        </div>
+                        <div data-note="D" class="key white">
+                          <span class="white_key_name">s</span>
+                        </div>
+                        <div data-note="Eb" class="key black">
+                          <span class="black_key_name">e</span>
+                        </div>
+                        <div data-note="E" class="key white">
+                          <span class="white_key_name">d</span>
+                        </div>
+                        <div data-note="F" class="key white">
+                          <span class="white_key_name">f</span>
+                        </div>
+                        <div data-note="Gb" class="key black">
+                          <span class="black_key_name">t</span>
+                        </div>
+                        <div data-note="G" class="key white">
+                          <span class="white_key_name">g</span>
+                        </div>
+                        <div data-note="Ab" class="key black">
+                          <span class="black_key_name">y</span>
+                        </div>
+                        <div data-note="A" class="key white">
+                          <span class="white_key_name">h</span>
+                        </div>
+                        <div data-note="Bb" class="key black">
+                          <span class="black_key_name">u</span>
+                        </div>
+                        <div data-note="B" class="key white">
+                          <span class="white_key_name">j</span>
+                        </div>
                       </div>
-                      <div data-note="Db" class="key black">
-                        <span class="black_key_name">w</span>
+                      <div class="dContainer">
+                        <button id="record-button" class="btn thin">Record</button>
+                        <button id="play-button" class="btn thin">Play</button>
                       </div>
-                      <div data-note="D" class="key white">
-                        <span class="white_key_name">s</span>
-                      </div>
-                      <div data-note="Eb" class="key black">
-                        <span class="black_key_name">e</span>
-                      </div>
-                      <div data-note="E" class="key white">
-                        <span class="white_key_name">d</span>
-                      </div>
-                      <div data-note="F" class="key white">
-                        <span class="white_key_name">f</span>
-                      </div>
-                      <div data-note="Gb" class="key black">
-                        <span class="black_key_name">t</span>
-                      </div>
-                      <div data-note="G" class="key white">
-                        <span class="white_key_name">g</span>
-                      </div>
-                      <div data-note="Ab" class="key black">
-                        <span class="black_key_name">y</span>
-                      </div>
-                      <div data-note="A" class="key white">
-                        <span class="white_key_name">h</span>
-                      </div>
-                      <div data-note="Bb" class="key black">
-                        <span class="black_key_name">u</span>
-                      </div>
-                      <div data-note="B" class="key white">
-                        <span class="white_key_name">j</span>
-                      </div>
+                      
+                      <audio id="C" src="notes/c4_louder10.mp3"></audio>
+                      <audio id="Db" src="notes/c-4_louder10.mp3"></audio>
+                      <audio id="D" src="notes/d4_louder10.mp3"></audio>
+                      <audio id="Eb" src="notes/d-4_louder10.mp3"></audio>
+                      <audio id="E" src="notes/e4_louder10.mp3"></audio>
+                      <audio id="F" src="notes/f4_louder10.mp3"></audio>
+                      <audio id="Gb" src="notes/f-4_louder10.mp3"></audio>
+                      <audio id="G" src="notes/g4_louder10.mp3"></audio>
+                      <audio id="Ab" src="notes/g-4_louder10.mp3"></audio>
+                      <audio id="A" src="notes/a5_louder10.mp3"></audio>
+                      <audio id="Bb" src="notes/a-5_louder10.mp3"></audio>
+                      <audio id="B" src="notes/b5_louder10.mp3"></audio>
+
+                     
                     </div>
-
-                    <audio id="C" src="notes/c4_louder10.mp3"></audio>
-                    <audio id="Db" src="notes/c-4_louder10.mp3"></audio>
-                    <audio id="D" src="notes/d4_louder10.mp3"></audio>
-                    <audio id="Eb" src="notes/d-4_louder10.mp3"></audio>
-                    <audio id="E" src="notes/e4_louder10.mp3"></audio>
-                    <audio id="F" src="notes/f4_louder10.mp3"></audio>
-                    <audio id="Gb" src="notes/f-4_louder10.mp3"></audio>
-                    <audio id="G" src="notes/g4_louder10.mp3"></audio>
-                    <audio id="Ab" src="notes/g-4_louder10.mp3"></audio>
-                    <audio id="A" src="notes/a5_louder10.mp3"></audio>
-                    <audio id="Bb" src="notes/a-5_louder10.mp3"></audio>
-                    <audio id="B" src="notes/b5_louder10.mp3"></audio>
-
-                    <button id="finishedPlaying">
-                      Done! (Listen to your melody)
-                    </button>
                   </div>
                 </div>
+              </div> 
+            </div>
+            <!-- -->
+              <div class="signContainer">
+                <div class="glowsign"><b># 2</b></div>
+              <div class="selectorContainer glowBox">
+                <div class="buttons">
+                  <button id="inputChords">Input a Chord Sequence</button>
+                  <button id="noChords">No Chord Sequence</button>
+                </div>
+                <div>
+                  <div id="chordSelector" class="" hidden>
+                    <div>
+                      <p class="desc">Chord progression:</p>
+                      <div id="status" class="loading"></div>
+                      <div id="changeChordsPopup"></div>
+                      <span id="chordsContainer" disabled>
+                        <span class="chordDisplay"
+                          >#1 <input id="chord1" type="text" value="Dm"
+                        /></span>
+                        <span class="chordDisplay"
+                          >#2 <input id="chord2" type="text" value="F"
+                        /></span>
+                        <span class="chordDisplay"
+                          >#3 <input id="chord3" type="text" value="Am"
+                        /></span>
+                        <span class="chordDisplay"
+                          >#4 <input id="chord4" type="text" value="G"
+                        /></span>
+                      </span>
+                      <button id="changeChords" class="thin">Change</button>
+                    </div>
+                  </div>
+                  <div id="noChordsSelector" class="" hidden>
+                    <p class="desc">No Chord Progression</p>
+   
+                  </div>
+                  
+                  
+                </div>
+                
+              </div>
+              <!-- <button id="finishedPlaying" class="thin">
+                Done! 
+              </button>  -->
+              <div class="glowsign ready" id="finishedPlaying">
+                <b>ready ✓</b>
               </div>
             </div>
-            <div class="selectorContainer">
-              <div class="buttons">
-                <button id="inputChords">Input a Chord Sequence</button>
-                <button id="noChords">No Chord Sequence</button>
-              </div>
-              <div>
-                <div id="chordSelector" class="container" hidden>
-                  <div>
-                    <p class="desc">Chord progression:</p>
-                    <div id="status" class="loading"></div>
-                    <div id="changeChordsPopup"></div>
-                    <span id="chordsContainer" disabled>
-                      <span class="chordDisplay"
-                        >#1 <input id="chord1" type="text" value="Dm"
-                      /></span>
-                      <span class="chordDisplay"
-                        >#2 <input id="chord2" type="text" value="F"
-                      /></span>
-                      <span class="chordDisplay"
-                        >#3 <input id="chord3" type="text" value="Am"
-                      /></span>
-                      <span class="chordDisplay"
-                        >#4 <input id="chord4" type="text" value="G"
-                      /></span>
-                    </span>
-                    <button id="changeChords">Change</button>
-                  </div>
-                </div>
-                <div id="noChordsSelector" class="container" hidden>
-                  <p class="desc">No Chord Progression</p>
-                </div>
-              </div>
             </div>
+            </div>
+            <!-- <button id="finishedPlaying" class="continue">
+              Done! 
+            </button> -->
+
           </section>
-
-          <div id="generateMusicContainer">
-            <!-- visualize melody with Visualizer on top  -->
-            <section>
-              <div class="visualizer-container">
-                <svg id="topVisualizer"></svg>
-              </div>
-            </section>
-
-            <!-- play current sequence up until now -->
-            <button id="playCompleteNoteSequenceButton">
-              Play sequence up until now
-            </button>
-
-            <!-- continue building the sequence -->
-            <div id="melodyBuilderContainer">
-              <!-- options for next sequences -->
-              <div id="nextSequence1">
-                <section>
-                  <div class="visualizer-container">
-                    <svg id="svg1"></svg>
+          <section id="create">
+            <div class="tVerticalContainer">
+            <div id="generateMusicContainer">
+              <!-- visualize melody with Visualizer on top  -->
+              <div class="signContainer">
+                <div class="glowsign"><b>your current sequence</b></div>
+                  <div>
+                  <div class="visualizer-container top-vc">
+                    <svg id="topVisualizer"></svg>
                   </div>
-                </section>
-                <button id="nextSequence1PlayButton">Play Option 1</button>
-                <button id="nextSequence1SelectButton">Select Option 1</button>
+                  <button id="playCompleteNoteSequenceButton" class="thin options">
+                    Play Sequence
+                  </button>
+                <!-- play current sequence up until now  -->
               </div>
-              <div id="nextSequence2">
-                <section>
-                  <div class="visualizer-container">
-                    <svg id="svg2"></svg>
+              <!-- continue building the sequence -->
+              <div id="melodyBuilderContainer" class="dContainer">
+                <!-- options for next sequences  -->
+                <div class="signContainer">
+                  <div class="glowsign"><b>option # 1</b></div>
+                  <div id="nextSequence1">
+
+                      <div class="visualizer-container">
+                        <svg id="svg1"></svg>
+                      </div>
+
+                    <button id="nextSequence1PlayButton" class="thin options">Play Option 1</button>
+                    <button id="nextSequence1SelectButton" class="thin options">Select Option 1</button>
                   </div>
-                </section>
-                <button id="nextSequence2PlayButton">Play Option 2</button>
-                <button id="nextSequence2SelectButton">Select Option 2</button>
+                </div>
+                <div class="signContainer">
+                  <div class="glowsign"><b>option # 2</b></div>
+                  <div id="nextSequence2">
+
+                      <div class="visualizer-container">
+                        <svg id="svg2"></svg>
+                      </div>
+
+                    <button id="nextSequence2PlayButton" class="thin options">Play Option 2</button>
+                    <button id="nextSequence2SelectButton" class="thin options">Select Option 2</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    <!-- </div> -->
+      </section> 
 
     <script src="generate_music.js"></script>
     <script src="display.js"></script>
+    <!-- <script src="mousesparkles.js"></script> -->
   </body>
 </html>

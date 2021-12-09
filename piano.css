@@ -29,7 +29,7 @@ body {
 
 .white_key_name {
   position: relative;
-  left: 4%;
+  left: 2%;
   top: 80%;
   font-family: 'Roboto Mono', monospace;
   font-size: 2em;
@@ -38,7 +38,7 @@ body {
 
 .black_key_name {
   position: relative;
-  left: 4%;
+  left: 2%;
   top: 50%;
   font-family: 'Roboto Mono', monospace;
   font-size: 2em;
@@ -47,7 +47,7 @@ body {
 
 .white {
   --width: 14%;
-  height: 300px;
+  height: 280px;
   background-color: white;
   border: 1px solid #333;
 }
@@ -58,7 +58,7 @@ body {
 
 .black {
   --width: 10%;
-  height: 175px;
+  height: 155px;
   background-color: black;
   margin-left: calc(var(--width) / -2);
   margin-right: calc(var(--width) / -2);

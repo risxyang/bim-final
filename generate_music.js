@@ -156,6 +156,8 @@ window.onload = () => {
 
   // init rnn
   initRNN()
+
+  mouseSparkles()
 };
 
 // 2 for testing, 8 originally
@@ -358,9 +360,11 @@ playButton.addEventListener('click', playSong.bind(this))
 function toggleRecording() {
   recordButton.classList.toggle('active')
   if (isRecording()) {
+    document.getElementById('record-button').innerText = 'Stop Recording';
     startRecording()
   } else {
     stopRecording()
+    document.getElementById('record-button').innerText = 'Record';
   }
 }
 

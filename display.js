@@ -38,3 +38,10 @@ const section2 = document.getElementById('settings')
 continueButton1.onclick = () => {
     section2.scrollIntoView();
  }
+
+
+// const continueButton2 = document.getElementById('finishedPlaying')
+const section3 = document.getElementById('create')
+// continueButton2.onclick = () => {
+//     section3.scrollIntoView();
+//  }

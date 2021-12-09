@@ -108,7 +108,7 @@ playLoadedMusicButton.onclick = () => { this.player.start(this.noteSequence) }
 originalNoteSeqButton.onclick = () => { rolloutPiano() }
 finishedPlayingButton.onclick = () => {
   hidePiano()
-
+  section3.scrollIntoView();
   // generate the first set of options
   generateMelodyBuilderOptions(this.currentInputNoteSequence)
 }
@@ -489,15 +489,23 @@ function generateMelodyBuilderOptions(ns) {
   const option1Promise = continueSequence(ns)
   const option2Promise = continueSequence(ns)
 
+  config = {
+    noteHeight: 6,
+    pixelsPerTimeStep: 30,  // like a note width
+    noteSpacing: 1,
+    noteRGB: '255, 255, 255',
+    activeNoteRGB: '0, 0, 255',
+  }
+
   Promise.all([option1Promise, option2Promise]).then((values) => {
     console.log('resolved continueSequence', values);
     this.melodyBuilderOptions.push(values)
-
+    
     // (re)-initialize the visuals
-    this.visualizer1 = new mm.PianoRollSVGVisualizer(values[0], svg1)
-    this.visualizer2 = new mm.PianoRollSVGVisualizer(values[1], svg2)
+    this.visualizer1 = new mm.PianoRollSVGVisualizer(values[0], svg1, config)
+    this.visualizer2 = new mm.PianoRollSVGVisualizer(values[1], svg2, config)
 
-    this.topVisualizer = new mm.PianoRollSVGVisualizer(this.completeNoteSequence, topSvg)
+    this.topVisualizer = new mm.PianoRollSVGVisualizer(this.completeNoteSequence, topSvg, config)
   });
 
   // redraw the visualizers

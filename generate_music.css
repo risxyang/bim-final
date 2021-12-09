@@ -21,14 +21,33 @@ body {
   
 section
 {
-  height: 100vh;
+  height: 110vh;
 }
  #home
  {
    display: grid;
-   grid-template-rows: 2fr 1fr 8fr 1fr;
+   grid-template-rows: 2fr 9fr 1fr;
    text-align: center;
  } 
+
+ #settings
+ {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  text-align: center;
+ }
+
+#create
+{
+  margin-top: 15%;
+}
+
+ .signContainer
+ {
+   display: grid;
+   grid-template-rows: 1fr 8fr;
+   height: 55%;
+ }
 
 
 .tContainer
@@ -39,6 +58,7 @@ section
 }
 
 .dContainer {
+  height: 70vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 5%;
@@ -46,8 +66,8 @@ section
 }
 
 .tVerticalcontainer {
-  display: grid;
-  grid-template-rows: 1fr 12fr;
+  /* display: grid; */
+  /* grid-template-rows: 2fr 1fr; */
   text-align: center;
 }
 
@@ -59,10 +79,10 @@ section
 
 .selectorContainer {
   display: grid;
-  height: 50%;
+  height: 100vh;
   grid-template-rows: 1fr 6fr;
   text-align: center;
-  grid-gap: 2%;
+  /* grid-gap: 2%; */
   margin-left: 4%;
   margin-right: 4%;
 }
@@ -324,6 +344,17 @@ input {
     border: 4px solid #78daf5;
     overflow: auto;
   }
+
+  .glowBox
+  {
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px #78daf5, 0px 0px 20px #78daf5 inset;
+    border: 4px solid #78daf5;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    padding: 40px;
+  }
 /* 
   #continue1
   {
@@ -331,13 +362,30 @@ input {
   } */
   .continue
   {
-    width: 20%;
+    width: 18%;
     height: 50px;
     margin: 20px auto;
     /* border-radius: 20px; */
     /* box-shadow: 0px 0px 20px #78daf5, 0px 0px 20px #78daf5 inset; */
     /* border: 4px solid #78daf5; */
     overflow: auto;
+    /* padding: 5px; */
+
+  }
+
+  .continue:hover{
+    background: #2e2087;
+  }
+
+  .thin
+  {
+    /* width: 20%; */
+    height: 50px;
+    /* margin: 20px auto; */
+    /* border-radius: 20px; */
+    /* box-shadow: 0px 0px 20px #78daf5, 0px 0px 20px #78daf5 inset; */
+    /* border: 4px solid #78daf5; */
+    /* overflow: auto; */
     /* padding: 5px; */
 
   }
@@ -379,7 +427,7 @@ button {
     color: white;
     box-shadow: 0 0 10px #78daf5;
   }
-  
+
   
   .chordDisplay
   {
@@ -398,10 +446,19 @@ button {
   }
 
 
+.ready
+{
+  border-radius: 100%;
+  box-shadow: 0px 0px 20px #f70073, 0px 0px 20px #78daf5 inset;
+  border: 4px solid white;
+  overflow: auto;
+  padding: 10px;
+  width: 50%;
+}
 
 .glowsign {
   text-align: center;
-  width: 65%;
+  /* width: 65%; */
   /* height: 250px; */
   margin: auto;
   position: relative;
@@ -409,7 +466,7 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-   user-select: none;
+  user-select: none;
 }
 
 .glowsign b{
@@ -483,9 +540,36 @@ button {
 
 
 .visualizer-container {
-  background: white;
+  margin: 0 auto;
+  width: 90%;
+  height: 160px;
+  /* background: white; */
   padding: 14px;
   overflow-x: auto;
+  overflow-y: hidden;
   border: 3px solid black;
-  margin-top: -3px;  /* so that the border doesn't overlap with the play buttons */
+  border-radius: 20px;
+  /* margin-top: -3px;  so that the border doesn't overlap with the play buttons */
+  box-shadow: 0px 0px 20px #78daf5, 0px 0px 20px #78daf5 inset;
+  border: 4px solid #78daf5; 
+  background: #1b1157;
+  max-width: 1400;
 }
+
+
+.top-vc
+{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.options
+{
+  width: 250px;
+}
+
+svg
+{
+  margin-top: 30px;
+}
+

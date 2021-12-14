@@ -3,6 +3,9 @@
 // const utils = require('./utils')
 // console.log(utils)
 
+// By default do not use chords
+var shouldUseChords = false
+
 const chordProgressions = [
   [
     'C', 'Am', 'F', 'G',
@@ -108,10 +111,13 @@ arpeggiatedButton.onclick = () => { selectPreloadedMelody("Arpeggiated") }
 sparseButton.onclick = () => { selectPreloadedMelody("Sparse") }
 
 finishedPlayingButton.onclick = () => {
-  hidePiano()
-  section3.scrollIntoView();
-  // generate the first set of options
-  generateMelodyBuilderOptions(this.currentInputNoteSequence)
+  console.log('shouldUseChords?', shouldUseChords)
+  initRNN(shouldUseChords).then(() => {
+    console.log('model is', this.model)
+    generateMelodyBuilderOptions(this.currentInputNoteSequence)
+    hidePiano()
+    section3.scrollIntoView();
+  })
 }
 
 // melody builder
@@ -155,9 +161,6 @@ window.onload = () => {
   // init player
   this.player = new mm.Player()
 
-  // init rnn
-  initRNN()
-
   mouseSparkles()
 };
 
@@ -175,28 +178,20 @@ const svg1 = document.getElementById('svg1')
 const svg2 = document.getElementById('svg2')
 const topSvg = document.getElementById('topVisualizer')
 
-const initRNN = () => {
+const MODELS = {
+  'basic_rnn': 'https://storage.googleapis.com/magentadata/js/checkpoints/music_rnn/basic_rnn',
+  'chord_pitches_improv': 'https://storage.googleapis.com/magentadata/js/checkpoints/music_rnn/chord_pitches_improv'
+}
+
+const initRNN = (useChords) => {
   console.log('hi')
-  const modelCheckPoint = 'https://storage.googleapis.com/magentadata/js/checkpoints/music_rnn/basic_rnn'
-  const model = new mm.MusicRNN(modelCheckPoint);
 
-  console.log('here')
+  const modelURL = useChords ? MODELS.chord_pitches_improv : MODELS.basic_rnn
+  const model = new mm.MusicRNN(modelURL)
 
-  model.initialize()
-    .then(() => {
-      console.log('initialized non-chord rnn!');
-      return model.continueSequence(
-        presetMelodies.Arpeggiated,
-        nOfBars * 16,
-        1.0)
-    })
-    .then((noteSequence) => {
-      // this.setMelodies([i]);
-      console.log(noteSequence)
+  console.log('initializing model with modelURL', modelURL)
 
-      this.noteSequence = noteSequence
-      this.model = model;
-    });
+  return model.initialize().then(() => { this.model = model })
 }
 
 const changeChordsButton = document.getElementById('changeChords');
@@ -240,10 +235,8 @@ function toggleChangeChords() {
   if (changingChords) {
     changingChords = false;
     chords = chordInputs.map(c => c.value);
-    console.log(chords);
-
-    // TODO: clean this up by using the existing this.chordRNN instead of re-initializing
-    initChordRNN()
+    console.log('chords changed to', chords);
+    shouldUseChords = true
 
     setUpdatingState();
     //   setTimeout(() => generateProgressions(setStoppedState), 0);
@@ -288,32 +281,6 @@ function chordChanged() {
   //     // })
   // }
 
-}
-
-const initChordRNN = () => {
-  console.log('hi')
-  const modelCheckPoint = 'https://storage.googleapis.com/magentadata/js/checkpoints/music_rnn/chord_pitches_improv'
-  const model = new mm.MusicRNN(modelCheckPoint);
-
-  console.log('here')
-
-  model.initialize()
-    .then(() => {
-      console.log('initialized chord rnn!');
-      console.log('chords are', chords)
-      return model.continueSequence(
-        presetMelodies.Arpeggiated,
-        nOfBars * 16,
-        1.0,
-        chords)
-    })
-    .then((noteSequence) => {
-      // this.setMelodies([i]);
-      console.log(noteSequence)
-
-      this.noteSequenceFromChord = noteSequence
-      this.model = model;
-    });
 }
 
 /*PIANO*/
@@ -518,19 +485,18 @@ function generateMelodyBuilderOptions(ns) {
   // this.visualizer2.redraw()
 }
 
-function continueSequence(ns, chordsArray) {
-  // takes a notesequence
-  // chords optional
-  if (chordsArray) {
-    console.log('using chords')
-    // TODO
+function continueSequence(ns) {
+  // takes a notesequence and continues it
+  // conditioning on chords optional, we decide based on the value of the global boolean
+  if (shouldUseChords) {
+    console.log('using chords', chords)
   }
 
   return this.model.continueSequence(
     ns,
     nOfBars * 16,
     1.0,
-    // chord here
+    shouldUseChords ? chords : undefined
   )
 }
 

@@ -87,8 +87,6 @@ const presetMelodies = {
 const twinkleButton = document.getElementById('twinkle')
 const arpeggiatedButton = document.getElementById('arpeggiated')
 const sparseButton = document.getElementById('sparse')
-const playNoteSeqFromChord = document.getElementById('noteSeqFromChord')
-const originalNoteSeqButton = document.getElementById('originalSequence')
 const finishedPlayingButton = document.getElementById('finishedPlaying')
 const piano = document.getElementById('pianoContainer')
 
@@ -102,8 +100,6 @@ const nextSequence2SelectButton = document.getElementById('nextSequence2SelectBu
 twinkleButton.onclick = () => { this.player.start(presetMelodies.Twinkle) }
 arpeggiatedButton.onclick = () => { this.player.start(presetMelodies.Arpeggiated) }
 sparseButton.onclick = () => { this.player.start(presetMelodies.Sparse) }
-playNoteSeqFromChord.onclick = () => { this.player.start(this.noteSequenceFromChord) }
-originalNoteSeqButton.onclick = () => { rolloutPiano() }
 finishedPlayingButton.onclick = () => {
   hidePiano()
   section3.scrollIntoView();

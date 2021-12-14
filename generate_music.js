@@ -456,7 +456,7 @@ function songNotesToNoteSequence(songNotes) {
   }
 
   // assume constant note length for now
-  notes = songNotes.map((noteObj, index) => ({
+  const notes = songNotes.map((noteObj, index) => ({
     pitch: noteToPitch(noteObj.key),
     quantizedStartStep: index * 2,
     quantizedEndStep: (index + 1) * 2,
@@ -466,7 +466,7 @@ function songNotesToNoteSequence(songNotes) {
     notes: notes,
     quantizationInfo: { stepsPerQuarter: 4 },
     tempos: [{ time: 0, qpm: 120 }],
-    totalQuantizedSteps: 32, // Note: this is hardcoded atm but we can make this any value
+    totalQuantizedSteps: notes.length * 2, // Note: this is hardcoded atm but we can make this any value
   }
 }
 

@@ -87,7 +87,6 @@ const presetMelodies = {
 const twinkleButton = document.getElementById('twinkle')
 const arpeggiatedButton = document.getElementById('arpeggiated')
 const sparseButton = document.getElementById('sparse')
-const playLoadedMusicButton = document.getElementById('loadedMusic')
 const playNoteSeqFromChord = document.getElementById('noteSeqFromChord')
 const originalNoteSeqButton = document.getElementById('originalSequence')
 const finishedPlayingButton = document.getElementById('finishedPlaying')
@@ -104,7 +103,6 @@ twinkleButton.onclick = () => { this.player.start(presetMelodies.Twinkle) }
 arpeggiatedButton.onclick = () => { this.player.start(presetMelodies.Arpeggiated) }
 sparseButton.onclick = () => { this.player.start(presetMelodies.Sparse) }
 playNoteSeqFromChord.onclick = () => { this.player.start(this.noteSequenceFromChord) }
-playLoadedMusicButton.onclick = () => { this.player.start(this.noteSequence) }
 originalNoteSeqButton.onclick = () => { rolloutPiano() }
 finishedPlayingButton.onclick = () => {
   hidePiano()

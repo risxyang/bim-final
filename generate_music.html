@@ -29,28 +29,35 @@
   </head>
 
   <body>
-    <!-- <div class="tVerticalContainer"> -->
-    <div id="container">
-      <canvas id="pixie"></canvas>
-    </div>
     <section id="home">
       <p class="title">Interactive Music Generator</p>
       <div class="signContainer">
         <div class="glowsign"><b>about</b></div>
         <div class="rules">
           Welcome to Building Interactive Music! We are so excited to have you
-          here.<br /><br />
-          After pressing the "Continue" button, you may input a melody to our
-          generator by either choosing a preloaded note sequence, creating your
-          own custom note sequence through our keyboard, or inputting a chord
-          sequence.<br /><br />
-          Then, our generator will extend your melody and provide two generated
-          music options for you to visualize, listen, and select.<br />
+          here. This app allows you to build your own melody using Magenta's
+          MusicRNN model<br /><br />
+
+          On step #1, you will create an input melody by either choosing a
+          preloaded note sequence or by inputting your own custom note sequence
+          through our keyboard. <br /><br />
+
+          On step #2, you will have the option to condition the generator on a
+          chord progression of your choice. By default, no chord progression is
+          used. <br /><br />
+
+          When you're satisfied with your input melody and chord progression,
+          you can press the glowing "Ready" button. Then, our generator will
+          extend your melody and provide two generated music options for you to
+          visualize, listen, and select.<br />
+
           After you select an option, our generator will continuously use your
           selection to generate more music and provide another two options.<br /><br />
-          Enjoy listening!
+
+          Enjoy listening! <br />
+          <br />
         </div>
-        <button id="continue1" class="continue">Continue</button>
+        <button id="continue1" class="continue">Get Started</button>
       </div>
     </section>
     <section id="settings">

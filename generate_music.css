@@ -525,7 +525,7 @@ button:hover {
 .visualizer-container {
   margin: 0 auto;
   width: 90%;
-  height: 160px;
+  height: 100%;
   /* background: white; */
   padding: 14px;
   overflow-x: auto;

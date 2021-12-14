@@ -27,6 +27,7 @@ noChordsButton.onclick = () => {
   console.log("hide chords");
   chordSelector.setAttribute("hidden", "");
   noChordSelector.removeAttribute("hidden");
+  shouldUseChords = false
 }
 
 inputChordsButton.onclick = () => {

@@ -504,7 +504,7 @@ function generateMelodyBuilderOptions(ns) {
   Promise.all([option1Promise, option2Promise]).then((values) => {
     console.log('resolved continueSequence', values);
     this.melodyBuilderOptions.push(values)
-    
+
     // (re)-initialize the visuals
     this.visualizer1 = new mm.PianoRollSVGVisualizer(values[0], svg1, config)
     this.visualizer2 = new mm.PianoRollSVGVisualizer(values[1], svg2, config)

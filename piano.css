@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -31,7 +33,7 @@ body {
   position: relative;
   left: 2%;
   top: 80%;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   font-size: 2em;
   color: #2e2087;
 }
@@ -40,7 +42,7 @@ body {
   position: relative;
   left: 2%;
   top: 50%;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   font-size: 2em;
   color: #78daf5;
 }
@@ -53,7 +55,7 @@ body {
 }
 
 .white.active {
-  background-color: #CCC;
+  background-color: #ccc;
 }
 
 .black {

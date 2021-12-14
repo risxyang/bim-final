@@ -103,23 +103,10 @@ const selectPreloadedMelody = (melodyName) => {
   document.getElementById("preloadedOptionsMessage").innerText = "Selected " + melodyName
 }
 
-twinkleButton.onclick = () => {
-  this.player.start(presetMelodies.Twinkle)
-  window.userInputNoteSequence = window.currentInputNoteSequence = window.completeNoteSequence = presetMelodies.Twinkle
-  document.getElementById("preloadedOptionsMessage").innerText = "Selected Twinkle"
-}
-arpeggiatedButton.onclick = () => {
-  this.player.start(presetMelodies.Arpeggiated)
-  window.userInputNoteSequence = window.currentInputNoteSequence = window.completeNoteSequence = presetMelodies.Arpeggiated
-  document.getElementById("preloadedOptionsMessage").innerText = "Selected Arpeggiated"
+twinkleButton.onclick = () => { selectPreloadedMelody("Twinkle") }
+arpeggiatedButton.onclick = () => { selectPreloadedMelody("Arpeggiated") }
+sparseButton.onclick = () => { selectPreloadedMelody("Sparse") }
 
-}
-sparseButton.onclick = () => {
-  this.player.start(presetMelodies.Sparse)
-  window.userInputNoteSequence = window.currentInputNoteSequence = window.completeNoteSequence = presetMelodies.Sparse
-  document.getElementById("preloadedOptionsMessage").innerText = "Selected Sparse"
-
-}
 finishedPlayingButton.onclick = () => {
   hidePiano()
   section3.scrollIntoView();

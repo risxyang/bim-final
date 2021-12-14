@@ -540,8 +540,7 @@ button:hover {
 }
 
 .top-vc {
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: auto;
 }
 
 .options {

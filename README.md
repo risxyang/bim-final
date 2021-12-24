@@ -1,11 +1,11 @@
 # Building Interactive Music 
 
-# How to run
+# How to Run
 ## Deployed Demo
 The app is deployed to heroku at http://interactive-music-generator.herokuapp.com/
-## Run from source
+## Run From Source
 Double-click `generate_music.html`. This is the root HTML file for the web app. This should open our home page as a static HTML page on your browser, and you can now play with the app!
-## Link to demo video
+## Link to Demo Video
 https://bit.ly/building-interactive-music-demo
 
 # Future Work
@@ -29,7 +29,7 @@ We see possibilities for future work on this system in expanding the variety of 
 * Explored an existing bidirectional LSTM model which makes use of Music21 for file parsing. Trained it on around 100 Classical Piano Compositions by JS Bach for up to 20 epochs using Google Colab. Informally evaluated the outputs, detecting more tonal shifts in the output after 20 vs. 10 epochs.
 * Designed user flow for the web application, ranging from functional aspects to aesthetic considerations. Wrote nearly all CSS and some vanilla JS, the latter for showing parts of the page upon interaction. Ensured the setup page, with all its user customization features was immediately intelligible, and that the order in which it should be filled out was clear.
 * Formatted the music generation section so that it would be intuitive to work between adding/previewing new options and seeing it in the overall composition, displayed on the main part of the page.
-Came up with neon aesthetic and sourced mouse sparkle code online to add a playful dimension to the site.
+* Came up with neon aesthetic and sourced mouse sparkle code online to add a playful dimension to the site.
 * Integrated web piano into the UI and added key triggers for accessibility.
 * Added ability for user to input/update a chord sequence and have it be stored in the application.
 * Wrote Abstract, some details on LSTM implementation,Website User Flow details, and Future Work sections of the Final Report
@@ -40,5 +40,5 @@ Came up with neon aesthetic and sourced mouse sparkle code online to add a playf
 * Wrote a majority of the Milestone Report, including the MuseGAN and Technical Approach sections
 * Embellished the Building Interactive Music keyboard UI by designing its notes and displaying the keys’ corresponding computer keyboard letters
 * Wrote the About description of Building Interactive Music
-Made all slides in the Presentation
+* Made all slides in the Presentation
 * Wrote a majority of the Final Report, including the Introduction, Related Work, Method, and Experiments sections

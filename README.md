@@ -1,5 +1,7 @@
 # Building Interactive Music 
 
+Welcome to Building Interactive Music! We are so excited to have you here. If you would like to learn the goals, motivations, and technical background of our system, check out our [presentation](https://docs.google.com/presentation/d/1rxk06hzk5e77PTEsMrWs38myg7RPur_o6x2i6cW7vqk/edit?usp=sharing) and our [final paper](https://www.dropbox.com/s/1brk3f35pgs79q9/CPSC_459_Final_Project_Report.pdf?dl=0).
+
 # How to Run
 ## Deployed Demo
 The app is deployed to heroku at http://interactive-music-generator.herokuapp.com/

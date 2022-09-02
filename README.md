@@ -4,7 +4,7 @@ Welcome to Building Interactive Music! We are so excited to have you here. If yo
 
 # How to Run
 ## Deployed Demo
-The app is deployed to heroku at http://interactive-music-generator.herokuapp.com/
+The app is deployed to heroku at https://interactive-music-generator.herokuapp.com/
 ## Run From Source
 Double-click `generate_music.html`. This is the root HTML file for the web app. This should open our home page as a static HTML page on your browser, and you can now play with the app!
 ## Link to Demo Video
